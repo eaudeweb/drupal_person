@@ -1,0 +1,13 @@
+langcode: en
+status: true
+dependencies: {  }
+id: person_image
+label: 'Person image'
+description: 'Used in content type Person to insert a person image.'
+source: image
+queue_thumbnail_downloads: false
+new_revision: false
+source_configuration:
+  source_field: field_media_image
+field_map:
+  name: name

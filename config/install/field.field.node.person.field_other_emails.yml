@@ -1,0 +1,18 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_other_emails
+    - node.type.person
+id: node.person.field_other_emails
+field_name: field_other_emails
+entity_type: node
+bundle: person
+label: 'Other emails'
+description: 'Secondary email addresses'
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: email

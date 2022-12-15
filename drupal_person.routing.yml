@@ -1,0 +1,14 @@
+entity.node.person_contact:
+  path: '/node/{node}/contact'
+  defaults:
+    _controller: '\Drupal\drupal_person\Controller\ContactPersonController::contactForm'
+    _title: 'Contact'
+  requirements:
+    _entity_access: 'node.view'
+    node: \d+
+  options:
+    parameters:
+      node:
+        type: entity:node
+        bundle:
+          - person

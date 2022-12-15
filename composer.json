@@ -1,0 +1,27 @@
+{
+    "name": "drupal/drupal_person",
+    "type": "drupal-module",
+    "description": "Provides a Drupal Person content type to be reused in projects\n\n",
+    "license": "GPL-2.0-or-later",
+    "minimum-stability": "dev",
+    "repositories": [
+        {
+            "type": "git",
+            "url": "git@github.com:eaudeweb/drupal_person.git"
+        }
+    ],
+    "support": {
+        "source": "https://github.com/eaudeweb/drupal_person"
+    },
+    "authors": [
+        {
+            "name": "Daniela Eremia",
+            "email": "dani.eremia@yahoo.com"
+        }
+    ],
+    "require": {
+        "drupal/languagefield": "^1.8",
+        "drupal/svg_image": "^1.16",
+        "drupal/entity_browser": "^2.8"
+    }
+}

@@ -1,0 +1,68 @@
+<?php
+
+/**
+ * @file
+ * Basic module file for drupal_person module.
+ */
+
+use Drupal\Core\Entity\EntityInterface;
+use Drupal\Core\Form\FormStateInterface;
+use Drupal\Core\StringTranslation\TranslatableMarkup;
+use Drupal\Core\Url;
+use Drupal\node\NodeInterface;
+use Drupal\drupal_person\PersonManager;
+use Drupal\taxonomy\Entity\Term;
+
+/**
+ * Implements hook_ENTITY_TYPE_prepare_form().
+ */
+function drupal_person_webform_submission_prepare_form(EntityInterface $entity, $operation, FormStateInterface $formState) {
+  if ($operation != 'add') {
+    return;
+  }
+  /** @var \Drupal\drupal_person\PersonManager $personManager */
+  $personManager = \Drupal::service('drupal_person.manager');
+  $webform = $entity->getWebform();
+  if ($webform->id() == 'contact_person') {
+    if ($personManager->getPerson() instanceof NodeInterface && $personManager->hasEmail()) {
+      $entity->setElementData('person_email', $personManager->getEmail());
+      $entity->setElementData('person_name', $personManager->getName());
+    }
+  }
+}
+
+/**
+ * Implements hook_form_BASE_FORM_ID_alter().
+ */
+function drupal_person_form_node_person_form_alter(&$form, FormStateInterface $form_state, $form_id) {
+  $form['#validate'][] = '_drupal_person_validate_person_contact_links';
+}
+
+/**
+ * Implements hook_form_BASE_FORM_ID_alter().
+ */
+function drupal_person_form_node_person_edit_form_alter(&$form, FormStateInterface $form_state, $form_id) {
+  $form['#validate'][] = '_drupal_person_validate_person_contact_links';
+}
+
+/**
+ * Validate form to ensure the Twitter and LinkedIn links are valid.
+ */
+function _drupal_person_validate_person_contact_links(&$form, FormStateInterface $form_state) {
+  /** @var \Drupal\drupal_person\PersonManager $personManager */
+  $personManager = \Drupal::service('drupal_person.manager');
+  if ($form_state->hasValue('field_twitter_profile')
+    && !empty($form_state->getValue('field_twitter_profile')[0]['uri'])) {
+    $uri = $form_state->getValue('field_twitter_profile')[0]['uri'];
+    if (!$personManager->validateUri($uri, PersonManager::TWITTER_VALIDATOR)) {
+      $form_state->setErrorByName('field_twitter_profile', 'Only twitter links are accepted.');
+    }
+  }
+  if ($form_state->hasValue('field_linkedin_profile')
+    && !empty($form_state->getValue('field_linkedin_profile')[0]['uri'])) {
+    $uri = $form_state->getValue('field_linkedin_profile')[0]['uri'];
+    if (!$personManager->validateUri($uri, PersonManager::LINKEDIN_VALIDATOR)) {
+      $form_state->setErrorByName('field_linkedin_profile', 'Only valid LinkedIn accounts are accepted.');
+    }
+  }
+}

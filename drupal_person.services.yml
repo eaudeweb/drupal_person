@@ -1,0 +1,4 @@
+services:
+  person.manager:
+    class: 'Drupal\drupal_person\PersonManager'
+    arguments: ['@entity_type.manager', '@current_route_match']

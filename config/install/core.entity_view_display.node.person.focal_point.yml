@@ -1,0 +1,112 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - core.entity_view_mode.node.focal_point
+    - field.field.node.person.body
+    - field.field.node.person.field_countries
+    - field.field.node.person.field_email
+    - field.field.node.person.field_epis
+    - field.field.node.person.field_gender
+    - field.field.node.person.field_image
+    - field.field.node.person.field_languages
+    - field.field.node.person.field_linkedin_profile
+    - field.field.node.person.field_other_emails
+    - field.field.node.person.field_person_address
+    - field.field.node.person.field_person_institution
+    - field.field.node.person.field_person_position
+    - field.field.node.person.field_phone
+    - field.field.node.person.field_relevant_works
+    - field.field.node.person.field_sectors
+    - field.field.node.person.field_twitter_profile
+    - node.type.person
+  module:
+    - layout_builder
+    - layout_builder_restrictions
+    - user
+third_party_settings:
+  layout_builder:
+    enabled: false
+    allow_custom: false
+  layout_builder_restrictions:
+    allowed_block_categories: {  }
+    entity_view_mode_restriction:
+      allowed_layouts:
+        - 'bootstrap_layout_builder:blb_col_1'
+        - 'bootstrap_layout_builder:blb_col_2'
+      denylisted_blocks: {  }
+      allowlisted_blocks: {  }
+      restricted_categories: {  }
+id: node.person.focal_point
+targetEntityType: node
+bundle: person
+mode: focal_point
+content:
+  field_countries:
+    type: entity_reference_label
+    label: hidden
+    settings:
+      link: false
+    third_party_settings: { }
+    weight: 3
+    region: content
+  field_email:
+    type: email_mailto
+    label: above
+    settings: {  }
+    third_party_settings: {  }
+    weight: 5
+    region: content
+  field_other_emails:
+    type: email_mailto
+    label: hidden
+    settings: {  }
+    third_party_settings: {  }
+    weight: 6
+    region: content
+  field_person_address:
+    type: basic_string
+    label: above
+    settings: {  }
+    third_party_settings: {  }
+    weight: 2
+    region: content
+  field_person_institution:
+    type: string
+    label: above
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
+    weight: 1
+    region: content
+  field_person_position:
+    type: string
+    label: above
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
+    weight: 0
+    region: content
+  field_phone:
+    type: string
+    label: above
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
+    weight: 4
+    region: content
+hidden:
+  body: true
+  field_epis: true
+  field_gender: true
+  field_image: true
+  field_internal_tags: true
+  field_languages: true
+  field_linkedin_profile: true
+  field_relevant_works: true
+  field_sectors: true
+  field_topics: true
+  field_twitter_profile: true
+  field_website: true
+  langcode: true
+  links: true

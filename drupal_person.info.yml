@@ -1,0 +1,11 @@
+name: EDW Person
+description: Provides a Drupal Person content type to be reused in projects
+package: EDW
+type: module
+core_version_requirement: ^8.9 || ^9.0
+dependencies:
+  - webform:webform
+  - languagefield:languagefield
+  - entity_browser:entity_browser
+  - svg_image:svg_image
+#  - drupal_event:drupal_event

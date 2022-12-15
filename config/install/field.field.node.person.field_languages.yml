@@ -1,0 +1,20 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_languages
+    - node.type.person
+  module:
+    - languagefield
+id: node.person.field_languages
+field_name: field_languages
+entity_type: node
+bundle: person
+label: Languages
+description: 'Spoken languages'
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: language_field
