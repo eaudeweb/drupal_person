@@ -21,7 +21,7 @@ function drupal_person_webform_submission_prepare_form(EntityInterface $entity, 
     return;
   }
   /** @var \Drupal\drupal_person\PersonManager $personManager */
-  $personManager = \Drupal::service('drupal_person.manager');
+  $personManager = \Drupal::service('person.manager');
   $webform = $entity->getWebform();
   if ($webform->id() == 'contact_person') {
     if ($personManager->getPerson() instanceof NodeInterface && $personManager->hasEmail()) {
@@ -50,7 +50,7 @@ function drupal_person_form_node_person_edit_form_alter(&$form, FormStateInterfa
  */
 function _drupal_person_validate_person_contact_links(&$form, FormStateInterface $form_state) {
   /** @var \Drupal\drupal_person\PersonManager $personManager */
-  $personManager = \Drupal::service('drupal_person.manager');
+  $personManager = \Drupal::service('person.manager');
   if ($form_state->hasValue('field_twitter_profile')
     && !empty($form_state->getValue('field_twitter_profile')[0]['uri'])) {
     $uri = $form_state->getValue('field_twitter_profile')[0]['uri'];
