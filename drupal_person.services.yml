@@ -2,3 +2,10 @@ services:
   person.manager:
     class: 'Drupal\drupal_person\PersonManager'
     arguments: ['@entity_type.manager', '@current_route_match']
+
+  person.path_processor:
+    class: Drupal\drupal_person\PathProcessor\PersonPathProcessor
+    arguments: ['@path_alias.path_processor', '@path_alias.manager', '@entity_type.manager', '@current_route_match']
+    tags:
+      - { name: path_processor_inbound, priority: 50 }
+      - { name: path_processor_outbound, priority: 50 }

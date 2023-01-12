@@ -7,11 +7,8 @@
 
 use Drupal\Core\Entity\EntityInterface;
 use Drupal\Core\Form\FormStateInterface;
-use Drupal\Core\StringTranslation\TranslatableMarkup;
-use Drupal\Core\Url;
 use Drupal\node\NodeInterface;
 use Drupal\drupal_person\PersonManager;
-use Drupal\taxonomy\Entity\Term;
 
 /**
  * Implements hook_ENTITY_TYPE_prepare_form().

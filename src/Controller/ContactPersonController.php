@@ -2,7 +2,6 @@
 
 namespace Drupal\drupal_person\Controller;
 
-use Drupal\backup_migrate\Core\Translation\TranslatableTrait;
 use Drupal\Core\Controller\ControllerBase;
 use Drupal\Core\DependencyInjection\ContainerInjectionInterface;
 use Drupal\node\Entity\Node;
@@ -16,8 +15,6 @@ use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
  * Controller for person submission contact.
  */
 class ContactPersonController extends ControllerBase implements ContainerInjectionInterface {
-
-  use TranslatableTrait;
 
   /**
    * The entity type manager.
