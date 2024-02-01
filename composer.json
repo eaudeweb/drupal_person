@@ -21,7 +21,7 @@
     ],
     "require": {
         "drupal/languagefield": "^1.8",
-        "drupal/svg_image": "^1.16",
+        "drupal/svg_image": "^1.16 || ^3.0",
         "drupal/entity_browser": "^2.8"
     }
 }
